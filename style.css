@@ -1,0 +1,33 @@
+body{
+   background-color: #f6f7fb;
+   margin: 0;
+   width: 100%;
+}
+header {
+   background-image: url(./backgroundImg.png);
+   background-repeat: no-repeat;
+   background-size: 100%;
+   width: 80%;
+   margin-left: auto;
+   margin-right: auto;
+   padding-top: 2rem;
+   padding-bottom: 8rem;
+}
+
+header input {
+   height: 55px;
+   width :790px; 
+   max-width: 100%;
+}
+header button {
+   max-width: 100%;
+   width: 146px;
+   height: 47px;
+   background-color: blue;
+   top: 0.5rem;
+   position: absolute;
+}
+header label {
+   width: 50%;
+   position: relative;
+}
