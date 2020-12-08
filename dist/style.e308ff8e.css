@@ -15,21 +15,28 @@ header {
 }
 
 header input {
-   height: 55px;
+   height: 40px;
    width :790px; 
    max-width: 100%;
+   
 }
 header button {
    max-width: 100%;
    width: 146px;
    height: 47px;
    background-color: blue;
-   top: 0.5rem;
+   top: -0.7rem;
    position: absolute;
+   right: 1rem;
 }
 header label {
    width: 50%;
    position: relative;
+}
+@media (min-width : 400px) {
+   .main_content{
+      display: flex;
+   }
 }
 
 /*# sourceMappingURL=/style.e308ff8e.css.map */

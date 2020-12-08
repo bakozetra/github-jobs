@@ -1,74 +1,83 @@
-import React , { createContext, useReducer  , useEffect, useState} from 'react' 
+import React, { createContext, useReducer, useEffect, useState } from 'react'
 
 const GlobalContext = createContext();
-function  GlobalContextProvider({children}) {
+function GlobalContextProvider({ children }) {
   let [state, dispatch] = useReducer((state, action) => {
-  switch(action.type) {
-    case 'LOADING': {
-      return { ...state, loading: true }
-    }
-    case 'RESOLVED': {
-      return {
-        ...state,
-        loading: false,
-        response: action.response,
-        error: null
-      
+    switch (action.type) {
+      case 'LOADING': {
+        return { ...state, loading: false }
       }
-    }
-    case 'ERROR': {
-      return {
-        ...state,
-        loading: false,
-        response: action.response,
-        error: action.error
-      }
-    }
-    case "FILTERS_JOB" : {
-      const filterJob = state.response.filter(job => {
-        if(job.title === action.title) {
-          return {
-            ...state ,
-            title : [...job , action.title]
-          }
+      case 'RESOLVED': {
+        return {
+          ...state,
+          loading: false,
+          response: action.response,
+          error: null
         }
-        return job
-      })
-      return {
-        ...state,
-        response : filterJob,
       }
+      case 'ERROR': {
+        return {
+          ...state,
+          loading: false,
+          response: action.response,
+          error: action.error
+        }
+      }
+      case "FILTERS_JOB": {
+        let value = action.value
+        const filterJob = state.response.filter(job => {
+          return job.title.toLocaleLowerCase().includes(value) || job.company.toLocaleLowerCase().includes(value)
+        })
+        return {
+          ...state,
+          response: filterJob
+        }
+      }
+      case "SHOW_DESCRIPTION": {
+        const findDesciption = state.response.find(jobId => {
+          if (jobId.id === action.id) {
+            return {
+              ...state,
+              description: { ...jobId.description}
+            }
+          }
+          return jobId
+        })
+        return {
+          ...state,
+          response: findDesciption
+        }
+      }
+      default:
+        return state
     }
-    default:
-      return state
-  }
-}, {
-  loading: false,
-  response:[],
-  error: null
-})
-useEffect(() => {
-  let isCurrent = true
-  dispatch({ type: "LOADING" })
-  const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=python&full_time=true&`;
-  fetch(URL)
-    .then(response => response.json())
-    .then(json => {
-      if (isCurrent) {
-        dispatch({ type: "RESOLVED", response: json })
-      }
-    }).catch(error => {
-      dispatch({ type: "ERROR", error })
-    })
-  return () => {
-    isCurrent = false
-  }
-}, [])
-console.log(state.response);
+  }, {
+    loading: true,
+    response: [],
+    error: null
+  })
+  useEffect(() => {
+    let isCurrent = true
+    dispatch({ type: "LOADING" })
+    const URL = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?`;
+    fetch(URL)
+      .then(response => response.json())
+      .then(json => {
+        if (isCurrent) {
+          dispatch({ type: "RESOLVED", response: json })
+        }
+      }).catch(error => {
+        dispatch({ type: "ERROR", error })
+      })
+    return () => {
+      isCurrent = false
+    }
+  }, [])
+  console.log(state.response);
 
-return <GlobalContext.Provider value = {{state , dispatch}}>{children}</GlobalContext.Provider>
+  return <GlobalContext.Provider value={{ state, dispatch }}>{children}</GlobalContext.Provider>
 
 }
 
-export {GlobalContext , GlobalContextProvider}
+export { GlobalContext, GlobalContextProvider }
 
