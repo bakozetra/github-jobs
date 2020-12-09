@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { GlobalContext } from './GlobalContext';
 
 function LocationChek() {
-  const { state, dispatch } = useContext(GlobalContext);
+  const {dispatch } = useContext(GlobalContext);
   const [check, setCheck] = useState(false);
   console.log(check);
   function handleClikButton(e) {

@@ -3,7 +3,6 @@ import { GlobalContext } from './GlobalContext'
 import Image from "../backgroundImg.png"
 
 function Header({filtersTitle}) {
-  const [jobAbout , setJobAbout] = useState([]);
   const {state , dispatch } = useContext(GlobalContext);
   let {response} = state;
 

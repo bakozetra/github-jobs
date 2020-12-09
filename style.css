@@ -7,6 +7,11 @@ a {
    list-style: none;
    text-decoration: none;
 }
+
+ul {
+   padding-left: 0;
+}
+
 header {
    width: 90%;
    margin-left: auto;
@@ -14,9 +19,7 @@ header {
    padding-bottom: 2rem;
    position: relative;
 }
-ul {
-   padding-left: 0;
-}
+
 
 header img {
    width: 400px;
@@ -24,18 +27,19 @@ header img {
    max-width: 100%;
    border-radius: 10px;
 }
+h1 {
+   max-width: 90%;
+   margin-left: auto;
+   margin-right: auto;
+}
+
 header label {
    position: absolute;
    top: 1.5rem;
    right: 2rem;
    width: 80%;
 }
-h1 {
-   max-width: 90%;
-   margin-left: auto;
-   margin-right: auto;
 
-}
 header input {
    height: 50px;
    width: 400px;
@@ -48,6 +52,7 @@ header input {
 header label div {
    position: relative;
 }
+
 header button {
    max-width: 100%;
    width: 90px;
@@ -63,6 +68,7 @@ header button {
    margin-left: auto;
    margin-right: auto;
 }
+
 .locationInput > input {
    width: 300px;
    height: 44px;
@@ -70,6 +76,7 @@ header button {
    outline: none;
    border: none;
 }
+
 .typeOfinput {
    width: 90%;
    margin-left: auto;
@@ -83,9 +90,11 @@ header button {
 .about_detail {
    display: flex;
 }
+
 .about_detail img {
    width: 10%;
 }
+
 .about_detail li {
    list-style: none;
    display: flex;
@@ -107,6 +116,7 @@ header button {
       margin-left: auto;
       margin-right: auto;
    }
+
    .about_location_date {
       display: flex;
       justify-content: space-between;
@@ -114,17 +124,21 @@ header button {
       right: 1rem;
       top: 5rem;
    }
+
    header img {
       width: 100%;
       height: 100%;
    }
+
    .job_content {
       display: flex;
       justify-content: space-between;
    }
+
    .container {
       position: relative;
    }
+
    header input {
       height: 55px;
       width: 790px;
@@ -132,6 +146,7 @@ header button {
       border-radius: 10px;
       border: none;
    }
+
    header button {
       max-width: 100%;
       width: 146px;
@@ -141,12 +156,14 @@ header button {
       border-radius: 10px;
       border: none;
    }
+
    header label {
       position: absolute;
       top: 3rem;
       right: 4rem;
       width: 80%;
    }
+   
    .about_detail li {
       list-style: none;
       display: flex;

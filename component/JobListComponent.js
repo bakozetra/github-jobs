@@ -17,7 +17,7 @@ function JobListComponent() {
           <div className="about_location_date">
             <p>{job.location}</p>
             <p>{job.created_at}</p>
-          </div> 
+          </div>
         </div>
       </li>
     </div>

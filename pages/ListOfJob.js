@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import { GlobalContext } from './GlobalContext'
 import styled from 'styled-components';
 import Header from './header';
@@ -21,52 +21,51 @@ const ListStyle = styled.ul`
 function ListOfJob() {
   const { state, dispatch } = useContext(GlobalContext)
   const { response, loading } = state;
-  const [desc, setDesc] = useState([]);
- 
+  
+
   function filtersTitle(e) {
     let input = e.target.value
     dispatch({ type: "FILTERS_JOB", value: input })
   }
+  
   function ShowDescription(id) {
     let idDescription = id
     dispatch({ type: "SHOW_DESCRIPTION" }, idDescription)
   }
-  function showDescription(id) {
-    const filters = response.filter(ids => ids.id === id);
-    setDesc(filters)
-  }
+
+ 
   function filtersId(id) {
     dispatch({ type: "SHOW_DESCRIPTION", id })
   }
-  function filterLocation (e) {
-   let input = e.target.value;
-   dispatch({type:"LOCATION" , value : input})
+  function filterLocation(e) {
+    let input = e.target.value;
+    dispatch({ type: "LOCATION", value: input })
   }
- 
+
   return (
     <div>
       <Header filtersTitle={filtersTitle} />
       <div className="main_content">
-      <div className="typeOfinput">
-        <FullTime/>
-        <Location filterLocation={filterLocation}/>
-        <LocationChek />
-      </div>
-      {loading && <h1>Loading...</h1>}
-      {!loading && response && (
-        <div>
-          {response.map(job => (
-            <MainJobProvider job={job} key={job.id} >
-              <ListStyle>
-                <Link to={`/${job.id}}`} onClick={() => filtersId(job)}>
-                  <JobListComponent/>
-                </Link>
-              </ListStyle>
-            </MainJobProvider>
-          )
-          )}
+        <div className="typeOfinput">
+          <FullTime />
+          <Location filterLocation={filterLocation} />
+          <LocationChek />
         </div>
-      )}
+        {loading && <h1>Loading...</h1>}
+        {!loading && response && (
+          <div>
+            {response.map(job => (
+              <MainJobProvider job={job} key={job.id} >
+                <ListStyle>
+                  <Link to={`/${job.id}}`} onClick={() => filtersId(job)}>
+                    <JobListComponent />
+                  </Link>
+                </ListStyle>
+              </MainJobProvider>
+            )
+            )}
+          </div>
+        )}
       </div>
     </div>
   )

@@ -23,45 +23,45 @@ function GlobalContextProvider({ children }) {
           error: action.error
         }
       }
-      case "LOCATION" : {
+      case "LOCATION": {
         let value = action.value
         const filterLocations = state.response.filter(job => {
-         return job.location.toLocaleLowerCase().includes(value)
+          return job.location.toLocaleLowerCase().includes(value)
         })
         return {
           ...state,
-          response:filterLocations,
+          response: filterLocations,
         }
       }
-      case "CHEK_FULL_TIME" : {
-       let value = action.value;
-       const filterJob = state.response.filter(job => {
-         if (job.type == value) {
-           return {
-             ...state,
-             type : [...job.type , value]
-           }
-         }
-         return job
-      })
-      return {
-        ...state,
-        response: filterJob
-      } 
-      }
-      case "NAME_COUNTRY" : {
+      case "CHEK_FULL_TIME": {
         let value = action.value;
-        const filterCountry = state.response.filter(job => {
-          if (job.location === value) {
+        const filterJob = state.response.filter(job => {
+          if (job.type == value) {
             return {
-              location : [...job.location , job.location.toLocaleLowerCase().includes(value.toLocaleLowerCase())]
+              ...state,
+              type: [...job.type, value]
             }
           }
           return job
         })
         return {
           ...state,
-          response : filterCountry
+          response: filterJob
+        }
+      }
+      case "NAME_COUNTRY": {
+        let value = action.value;
+        const filterCountry = state.response.filter(job => {
+          if (job.location === value) {
+            return {
+              location: [...job.location, job.location.toLocaleLowerCase().includes(value.toLocaleLowerCase())]
+            }
+          }
+          return job
+        })
+        return {
+          ...state,
+          response: filterCountry
         }
       }
       case "FILTERS_JOB": {
@@ -79,7 +79,7 @@ function GlobalContextProvider({ children }) {
           if (jobId.id === action.id) {
             return {
               ...state,
-              description: { ...jobId.description}
+              description: { ...jobId.description }
             }
           }
           return jobId
@@ -88,9 +88,9 @@ function GlobalContextProvider({ children }) {
           ...state,
           response: findDesciption
         }
-       
+
       }
-      
+
       default:
         return state
     }

@@ -4,19 +4,17 @@ import { GlobalContext } from '../pages/GlobalContext'
 import { MainJOb } from './MainJob';
 
 function DescriptionComponent() {
-  const {job} = useContext(MainJOb);
+  const { job } = useContext(MainJOb);
   console.log(job);
-  const { state , dispatch } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
   const { response } = state;
 
-  // console.log(response);
-  // const { descriptions } = useParams()
   return (
     <div>
       {
-        response.map( p => {
+        response.map(p => {
           return (
-          <p>{p.title}</p>
+            <p>{p.title}</p>
           )
         })
       }
