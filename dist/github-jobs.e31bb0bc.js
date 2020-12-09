@@ -34264,6 +34264,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -34330,7 +34338,13 @@ function GlobalContextProvider(_ref) {
         {
           var _value = action.value;
           var filterJob = state.response.filter(function (job) {
-            return job.type.toLocaleLowerCase().includes(_value);
+            if (job.type == _value) {
+              return _objectSpread(_objectSpread({}, state), {}, {
+                type: [].concat(_toConsumableArray(job.type), [_value])
+              });
+            }
+
+            return job;
           });
           return _objectSpread(_objectSpread({}, state), {}, {
             response: filterJob
@@ -36853,14 +36867,14 @@ function FullTime() {
       state = _useContext.state,
       dispatch = _useContext.dispatch;
 
-  var _useState = (0, _react.useState)(false),
+  var _useState = (0, _react.useState)(true),
       _useState2 = _slicedToArray(_useState, 2),
       checked = _useState2[0],
       setChecked = _useState2[1];
 
   function handeClik(e) {
-    if (!checked === e.target.checked) {
-      setChecked(!checked);
+    if (checked === e.target.checked) {
+      setChecked(checked);
       var value = e.target.checked;
       dispatch({
         type: "CHEK_FULL_TIME",
@@ -37141,7 +37155,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50396" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55832" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

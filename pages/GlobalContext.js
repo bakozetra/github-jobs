@@ -36,7 +36,13 @@ function GlobalContextProvider({ children }) {
       case "CHEK_FULL_TIME" : {
        let value = action.value;
        const filterJob = state.response.filter(job => {
-        return job.type.toLocaleLowerCase().includes(value) 
+         if (job.type == value) {
+           return {
+             ...state,
+             type : [...job.type , value]
+           }
+         }
+         return job
       })
       return {
         ...state,

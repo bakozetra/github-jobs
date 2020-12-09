@@ -3,10 +3,10 @@ import { GlobalContext } from '../pages/GlobalContext';
 
 function FullTime() {
   const {state , dispatch} =  useContext(GlobalContext)
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   function handeClik(e) {
-    if(!checked === e.target.checked) {
-      setChecked(!checked);
+    if(checked === e.target.checked) {
+      setChecked(checked);
       let value = e.target.checked;
       dispatch ({type:"CHEK_FULL_TIME" , value : value })
       console.log("hello");
