@@ -78,7 +78,7 @@ This app looks like this in mobile
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
 -   Where can I see your demo?
-You can see my projet in this link <a href="https://objective-cori-42d782.netlify.app/">
+You can see my projet in this link <a href="https://objective-cori-42d782.netlify.app/"/>
 -   What was your experience?
 I have learn hoe to use filter , which is quite hard but I still can solve some of them. I have learn how to use useReducer which makes my code ease to undersatand and clean.
 
