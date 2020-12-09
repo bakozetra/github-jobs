@@ -1,9 +1,13 @@
 import React from 'react'
 
-function Location() {
+function Location({filterLocation}) {
   return (
-    <div>
-     <input/>
+    <div className="locationInput">
+    <p>Location</p>
+     <input 
+     placeholder="Loaction"
+     onChange={filterLocation} 
+     />
     </div>
   )
 }

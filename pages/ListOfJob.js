@@ -15,9 +15,6 @@ const ListStyle = styled.ul`
       list-style: none;
       display : flex;
       background: rgba(255, 255, 255, 1);
-      img {
-        width : 10%;
-      }
      }
     }
 `
@@ -25,8 +22,7 @@ function ListOfJob() {
   const { state, dispatch } = useContext(GlobalContext)
   const { response, loading } = state;
   const [desc, setDesc] = useState([]);
-
-
+ 
   function filtersTitle(e) {
     let input = e.target.value
     dispatch({ type: "FILTERS_JOB", value: input })
@@ -42,25 +38,29 @@ function ListOfJob() {
   function filtersId(id) {
     dispatch({ type: "SHOW_DESCRIPTION", id })
   }
+  function filterLocation (e) {
+   let input = e.target.value;
+   dispatch({type:"LOCATION" , value : input})
+  }
+ 
   console.log(desc);
   return (
     <div>
       <Header filtersTitle={filtersTitle} />
       <div className="main_content">
-      <div>
-        <FullTime />
-        <Location/>
+      <div className="typeOfinput">
+        <FullTime/>
+        <Location filterLocation={filterLocation}/>
         <LocationChek />
       </div>
-      {loading && <p>Loading...</p>}
+      {loading && <h1>Loading...</h1>}
       {!loading && response && (
         <div>
           {response.map(job => (
             <MainJobProvider job={job} key={job.id} >
-
               <ListStyle>
                 <Link to={`/${job.id}}`} onClick={() => filtersId(job)}>
-                  <JobListComponent />
+                  <JobListComponent/>
                 </Link>
               </ListStyle>
             </MainJobProvider>

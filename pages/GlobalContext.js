@@ -5,7 +5,7 @@ function GlobalContextProvider({ children }) {
   let [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case 'LOADING': {
-        return { ...state, loading: false }
+        return { ...state, loading: true }
       }
       case 'RESOLVED': {
         return {
@@ -22,6 +22,26 @@ function GlobalContextProvider({ children }) {
           response: action.response,
           error: action.error
         }
+      }
+      case "LOCATION" : {
+        let value = action.value
+        const filterLocations = state.response.filter(job => {
+         return job.location.toLocaleLowerCase().includes(value)
+        })
+        return {
+          ...state,
+          response:filterLocations,
+        }
+      }
+      case "CHEK_FULL_TIME" : {
+       let value = action.value;
+       const filterJob = state.response.filter(job => {
+        return job.type.toLocaleLowerCase().includes(value) 
+      })
+      return {
+        ...state,
+        response: filterJob
+      } 
       }
       case "FILTERS_JOB": {
         let value = action.value
@@ -47,12 +67,14 @@ function GlobalContextProvider({ children }) {
           ...state,
           response: findDesciption
         }
+       
       }
+      
       default:
         return state
     }
   }, {
-    loading: true,
+    loading: false,
     response: [],
     error: null
   })
@@ -73,6 +95,7 @@ function GlobalContextProvider({ children }) {
       isCurrent = false
     }
   }, [])
+
   console.log(state.response);
 
   return <GlobalContext.Provider value={{ state, dispatch }}>{children}</GlobalContext.Provider>

@@ -6,12 +6,12 @@ function App() {
    
   return (
     <div>
-      <h1>Searching Job</h1>
+      <h1>Github Jobs</h1>
       <Switch>
         <Route exact path ="/">
         <ListOfJob/>
         </Route>
-        <Route path ="/:description">
+        <Route path ="/:descriptions">
           <Description/>
         </Route>
       </Switch>
