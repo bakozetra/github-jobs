@@ -49,6 +49,21 @@ function GlobalContextProvider({ children }) {
         response: filterJob
       } 
       }
+      case "NAME_COUNTRY" : {
+        let value = action.value;
+        const filterCountry = state.response.filter(job => {
+          if (job.location === value) {
+            return {
+              location : [...job.location , job.location.toLocaleLowerCase().includes(value.toLocaleLowerCase())]
+            }
+          }
+          return job
+        })
+        return {
+          ...state,
+          response : filterCountry
+        }
+      }
       case "FILTERS_JOB": {
         let value = action.value
         const filterJob = state.response.filter(job => {

@@ -43,7 +43,6 @@ function ListOfJob() {
    dispatch({type:"LOCATION" , value : input})
   }
  
-  console.log(desc);
   return (
     <div>
       <Header filtersTitle={filtersTitle} />

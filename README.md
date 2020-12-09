@@ -41,15 +41,15 @@ Template for your readme :
 
 <!-- Please update value in the {}  -->
 
-<h1 align="center">{Your project name}</h1>
+<h1 align="center">Github Jobs</h1>
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://objective-cori-42d782.netlify.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/bakozetra/github-jobs">
       Solution
     </a>
   </h3>
@@ -69,30 +69,55 @@ Template for your readme :
 <!-- OVERVIEW -->
 
 ## Overview
+ 
+![screenshot](./assets/job.png)
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+This app looks like this in mobile 
+![screenshot](./assets/jobs.png)
 
 Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
 -   Where can I see your demo?
+You can see my projet in this link <a href="https://objective-cori-42d782.netlify.app/">
 -   What was your experience?
--   In a few sentences, explain the structure of your project.
--   If you had more time, what area of your project would you improve?
--   Did you learn anything new while working on this project?
--   What was the most challenging part for you?
--   Any other comments?
+I have learn hoe to use filter , which is quite hard but I still can solve some of them. I have learn how to use useReducer which makes my code ease to undersatand and clean.
 
+-   In a few sentences, explain the structure of your project.
+  First and foremost , I use React , useReducer, useContext and Router. I have two folder Component folder and pages folder. I put the App file and index file outside of those folders. I created GlobalContext which contains all of the conditions of my code such as filtering. I use useReducer to get my Api. After that , I created a MainJob file to put my useContext. I used MainJob to wrap the listOfJobComponent file so that I can use the value of the main Job later. I put all the component in ListOfJob file 
+   I created two folder: 
+       - Component folder :
+       This folder contains 4 files which are about html.
+       - pages folder : 
+       This folder contains 6 files which is about the general rules. 
+       I put the GlobalContext.js which is about all the reducer code
+
+
+-   If you had more time, what area of your project would you improve?
+ If I have more time , I would like to make all checkboxes  and details  of the job get working.
+ 
+-   Did you learn anything new while working on this project?
+I have learned new concepts about filtering. I spend my time adding the lowercase in the reducer when I filter the API because I could not get the lowercase. However , at last I solved it.
+
+-   What was the most challenging part for you?
+There are many challenges in this project but the most challenging are  the checkbox and how to get the details of the job. They are the most challenged because I could not solve them even until now. But even that , I hope I still can solve them later on.
 
 
 ### Built With
 
+ I used React : 
+ - useState ,
+ - useReducer , 
+ - Router
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 -   [React](https://reactjs.org/)
 
 ## Features
 
-<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
+![screenshot](./assets/job.png)
+
+This app looks like this in mobile 
+![screenshot](./assets/jobs.png)
 
 ## How To Use
 

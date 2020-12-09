@@ -6,15 +6,13 @@ function FullTime() {
   const [checked, setChecked] = useState(true);
   function handeClik(e) {
     if(checked === e.target.checked) {
-      setChecked(checked);
       let value = e.target.checked;
       dispatch ({type:"CHEK_FULL_TIME" , value : value })
       console.log("hello");
+      return  setChecked(checked);
     }
-
     else {
       console.log("wron");
-      return checked
     }
   }
   console.log(checked);
